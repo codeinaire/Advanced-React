@@ -1,9 +1,3 @@
-import Items from '../components/Items';
+import Items from './index';
 
-const Home = () => (
-  <div>
-    <Items />
-  </div>
-);
-
-export default Home;
+export default Items;
