@@ -34,11 +34,13 @@ class CreateItem extends Component {
     largeImage: 'large-dog.jpg',
     price: 1000,
   };
+
   handleChange = e => {
     const { name, type, value } = e.target;
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
+
   render() {
     return (
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>

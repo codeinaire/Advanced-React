@@ -127,7 +127,8 @@
         "specialLink": ["hrefLeft", "hrefRight"],
         "aspects": ["invalidHref", "preferButton"]
       }
-    ]
+    ],
+    "react/destructuring-assignment": [ "never"]
   },
   "plugins": [
     // "html",
