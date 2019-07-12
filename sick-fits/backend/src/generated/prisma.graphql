@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/john-codeinaire/sicccccccccc-fits/dev
-# timestamp: Thu Jul 11 2019 18:19:48 GMT+1000 (Australian Eastern Standard Time)
+# timestamp: Fri Jul 12 2019 09:46:37 GMT+1000 (Australian Eastern Standard Time)
 
 type AggregateItem {
   count: Int!
@@ -44,7 +44,6 @@ input ItemCreateInput {
   image: String
   largeImage: String
   price: Int!
-  createAt: DateTime!
 }
 
 """An edge in a connection."""
@@ -131,7 +130,6 @@ input ItemUpdateInput {
   image: String
   largeImage: String
   price: Int
-  createAt: DateTime
 }
 
 input ItemUpdateManyMutationInput {
@@ -140,7 +138,6 @@ input ItemUpdateManyMutationInput {
   image: String
   largeImage: String
   price: Int
-  createAt: DateTime
 }
 
 input ItemWhereInput {
