@@ -15,7 +15,6 @@ function hasPermission(user, permissionsNeeded) {
       `);
     } catch(err) {
       console.error(`ERROR: ${err}`);
-
     }
   }
 }
