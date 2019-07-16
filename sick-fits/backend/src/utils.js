@@ -7,14 +7,14 @@ function hasPermission(user, permissionsNeeded) {
     try {
       throw new Error(`You do not have sufficient permissions
 
-      : ${permissionsNeeded}
+    : ${permissionsNeeded}
 
-      You Have:
+    You Have:
 
-      ${user.permissions}
-      `);
+    ${user.permissions}
+    `);
     } catch(err) {
-      console.error(`ERROR: ${err}`);
+      console.error(`You've an error: ${err}`)
     }
   }
 }
