@@ -7,8 +7,16 @@ import Error from './ErrorMessage';
 import { CURRENT_USER_QUERY } from './User';
 
 const RESET_MUTATION = gql`
-  mutation RESET_MUTATION($resetToken: String!, $password: String!, $confirmPassword: String!) {
-    resetPassword(resetToken: $resetToken, password: $password, confirmPassword: $confirmPassword) {
+  mutation RESET_MUTATION(
+    $resetToken: String!
+    $password: String!
+    $confirmPassword: String!
+  ) {
+    resetPassword(
+      resetToken: $resetToken
+      password: $password
+      confirmPassword: $confirmPassword
+    ) {
       id
       email
       name
@@ -20,13 +28,16 @@ class Reset extends Component {
   static propTypes = {
     resetToken: PropTypes.string.isRequired,
   };
+
   state = {
     password: '',
     confirmPassword: '',
   };
+
   saveToState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   render() {
     return (
       <Mutation
