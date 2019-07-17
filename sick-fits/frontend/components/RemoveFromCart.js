@@ -27,9 +27,13 @@ class RemoveFromCart extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
   };
+
   render() {
     return (
-      <Mutation mutation={REMOVE_FROM_CART_MUTATION} variables={{ id: this.props.id }}>
+      <Mutation
+        mutation={REMOVE_FROM_CART_MUTATION}
+        variables={{ id: this.props.id }}
+      >
         {(removeFromCart, { loading, error }) => (
           <BigButton
             disabled={loading}
