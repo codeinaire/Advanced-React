@@ -27,6 +27,7 @@ class RemoveFromCart extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
   };
+
   // This gets called as soon as we get a response back from the server after a mutation has been performed
   update = (cache, payload) => {
     console.log('Running remove from cart update fn');
@@ -39,6 +40,7 @@ class RemoveFromCart extends React.Component {
     // 3. write it back to the cache
     cache.writeQuery({ query: CURRENT_USER_QUERY, data });
   };
+
   render() {
     return (
       <Mutation
