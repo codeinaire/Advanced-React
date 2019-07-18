@@ -34,7 +34,7 @@ const Composed = adopt({
 const Cart = () => (
   <Composed>
     {({ user, toggleCart, localState }) => {
-      const {me} = user.data;
+      const { me } = user.data;
       if (!me) return null;
       return (
         <CartStyles open={localState.data.cartOpen}>
@@ -55,9 +55,11 @@ const Cart = () => (
           </ul>
           <footer>
             <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-            <TakeMyMoney>
-              <SickButton>Checkout</SickButton>
-            </TakeMyMoney>
+            {me.cart.length && (
+              <TakeMyMoney>
+                <SickButton>Checkout</SickButton>
+              </TakeMyMoney>
+            )}
           </footer>
         </CartStyles>
       );

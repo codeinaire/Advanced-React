@@ -293,6 +293,7 @@ const Mutations = {
           id
           description
           image
+          largeImage
         }
       }}`
     );
@@ -309,9 +310,45 @@ const Mutations = {
       source: args.token,
     });
     // 4. Convert the CartItems to OrderItems
+    // array of order items disconnected from the cart
+    const orderItems = user.cart.map(cartItem => {
+      const orderItem = {
+        ...cartItem.item,
+        quantity: cartItem.quantity,
+        user: {
+          connect: {
+            id: userId
+          }
+        }
+      };
+      // we don't want the orderItem id so we delete it
+      delete orderItem.id;
+      return orderItem;
+    })
     // 5. create the Order
+    const order = await ctx.db.mutation.createOrder({
+      data: {
+        total: charge.amount,
+        charge: charge.id,
+        items:  {
+          create: orderItems
+        },
+        user: {
+          connect: {
+            id: userId
+          }
+        }
+      }
+    })
     // 6. Clean up - clear the users cart, delete cartItems
+    const cartItemIds = user.cart.map(cartItem => cartItem.id);
+    await ctx.db.mutation.deleteManyCartItems({
+      where: {
+        id_in: cartItemIds,
+      }
+    });
     // 7. Return the Order to the client
+    return order;
   },
 };
 
