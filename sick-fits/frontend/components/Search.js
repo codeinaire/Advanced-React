@@ -8,7 +8,14 @@ import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_ITEMS_QUERY = gql`
   query SEARCH_ITEMS_QUERY($searchTerm: String!) {
-    items(where: { OR: [{ title_contains: $searchTerm }, { description_contains: $searchTerm }] }) {
+    items(
+      where: {
+        OR: [
+          { title_contains: $searchTerm }
+          { description_contains: $searchTerm }
+        ]
+      }
+    ) {
       id
       image
       title
@@ -30,6 +37,7 @@ class AutoComplete extends React.Component {
     items: [],
     loading: false,
   };
+
   onChange = debounce(async (e, client) => {
     console.log('Searching...');
     // turn loading on
@@ -44,11 +52,21 @@ class AutoComplete extends React.Component {
       loading: false,
     });
   }, 350);
+
   render() {
     return (
       <SearchStyles>
-        <Downshift onChange={routeToItem} itemToString={item => (item === null ? '' : item.title)}>
-          {({ getInputProps, getItemProps, isOpen, inputValue, highlightedIndex }) => (
+        <Downshift
+          onChange={routeToItem}
+          itemToString={item => (item === null ? '' : item.title)}
+        >
+          {({
+            getInputProps,
+            getItemProps,
+            isOpen,
+            inputValue,
+            highlightedIndex,
+          }) => (
             <div>
               <ApolloConsumer>
                 {client => (
@@ -78,8 +96,9 @@ class AutoComplete extends React.Component {
                       {item.title}
                     </DropDownItem>
                   ))}
-                  {!this.state.items.length &&
-                    !this.state.loading && <DropDownItem> Nothing Found {inputValue}</DropDownItem>}
+                  {!this.state.items.length && !this.state.loading && (
+                    <DropDownItem> Nothing Found {inputValue}</DropDownItem>
+                  )}
                 </DropDown>
               )}
             </div>
