@@ -59,10 +59,10 @@ class TakeMyMoney extends React.Component {
                 amount={calcTotalPrice(me.cart)}
                 name="Sick Fits"
                 description={`Order of ${totalItems(me.cart)} items!`}
-                image={``
+                image={
                   me.cart.length && me.cart[0].item && me.cart[0].item.image
                 }
-                stripeKey="pk_test_Vtknn6vSdcZWSG2JWvEiWSqC"
+                stripeKey="pk_test_EqeyNUa1AM09mEVBXv4KGTkZ"
                 currency="USD"
                 email={me.email}
                 token={res => this.onToken(res, createOrder)}

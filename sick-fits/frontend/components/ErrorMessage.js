@@ -19,7 +19,6 @@ const ErrorStyles = styled.div`
 `;
 
 const DisplayError = ({ error }) => {
-  console.log('INSIDE ERROR COMPONENT####', error)
   if (!error || !error.message) return null;
   if (
     error.networkError &&

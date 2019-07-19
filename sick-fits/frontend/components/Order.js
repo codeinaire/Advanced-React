@@ -41,7 +41,7 @@ class Order extends React.Component {
         {({ data, error, loading }) => {
           if (error) return <Error error={error} />;
           if (loading) return <p>Loading...</p>;
-          const {order} = data;
+          const { order } = data;
           return (
             <OrderStyles>
               <Head>
@@ -57,7 +57,9 @@ class Order extends React.Component {
               </p>
               <p>
                 <span>Date</span>
-                <span>{format(order.createdAt, 'MMMM d, YYYY h:mm a')}</span>
+                <span>
+                  {format(new Date(order.createdAt), 'MMMM d, yyyy h:mm a')}
+                </span>
               </p>
               <p>
                 <span>Order Total</span>
