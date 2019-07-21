@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
-import Head from 'next/head';
-import styled from 'styled-components';
 import { Query } from 'react-apollo';
 import Error from './ErrorMessage';
+import styled from 'styled-components';
+import Head from 'next/head';
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
@@ -67,3 +67,4 @@ class SingleItem extends Component {
 }
 
 export default SingleItem;
+export { SINGLE_ITEM_QUERY };
