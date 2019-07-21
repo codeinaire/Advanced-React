@@ -14,6 +14,9 @@ const fakeItem = {
 describe('<Item/>', () => {
   it('renders and matches the snapshot', () => {
     const wrapper = shallow(<ItemComponent item={fakeItem} />);
+    const PriceTag = wrapper.find('a');
+    console.log(PriceTag.debug());
+
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
   // it('renders the image properly', () => {
