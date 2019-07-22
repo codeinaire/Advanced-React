@@ -34,16 +34,15 @@ class Order extends React.Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
   };
-
   render() {
     return (
       <Query query={SINGLE_ORDER_QUERY} variables={{ id: this.props.id }}>
         {({ data, error, loading }) => {
           if (error) return <Error error={error} />;
           if (loading) return <p>Loading...</p>;
-          const { order } = data;
+          const order = data.order;
           return (
-            <OrderStyles>
+            <OrderStyles data-test="order">
               <Head>
                 <title>Sick Fits - Order {order.id}</title>
               </Head>
@@ -57,9 +56,7 @@ class Order extends React.Component {
               </p>
               <p>
                 <span>Date</span>
-                <span>
-                  {format(new Date(order.createdAt), 'MMMM d, yyyy h:mm a')}
-                </span>
+                <span>{format(order.createdAt, 'MMMM d, YYYY h:mm a')}</span>
               </p>
               <p>
                 <span>Order Total</span>
@@ -92,3 +89,4 @@ class Order extends React.Component {
 }
 
 export default Order;
+export { SINGLE_ORDER_QUERY };
